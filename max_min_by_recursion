@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+// Function to find the maximum value recursively
+int find_max_recursive(int arr[], int n) {
+    // Base case: If the list has only one element, that element is the maximum
+    if (n == 1) {
+        return arr[0];
+    } else {
+        // Recursively find the maximum of the rest of the list
+        int max_of_rest = find_max_recursive(arr, n - 1);
+        return (arr[n - 1] > max_of_rest) ? arr[n - 1] : max_of_rest;
+    }
+}
+
+// Function to find the minimum value recursively
+int find_min_recursive(int arr[], int n) {
+    // Base case: If the list has only one element, that element is the minimum
+    if (n == 1) {
+        return arr[0];
+    } else {
+        // Recursively find the minimum of the rest of the list
+        int min_of_rest = find_min_recursive(arr, n - 1);
+        return (arr[n - 1] < min_of_rest) ? arr[n - 1] : min_of_rest;
+    }
+}
+
+int main() {
+    int numbers[] = {3, 5, 1, 8, -2, 7, 10, -5};
+    int n = sizeof(numbers) / sizeof(numbers[0]);
+
+    int max_value = find_max_recursive(numbers, n);
+    int min_value = find_min_recursive(numbers, n);
+
+    printf("Maximum value: %d\n", max_value);
+    printf("Minimum value: %d\n", min_value);
+
+    return 0;
+}
